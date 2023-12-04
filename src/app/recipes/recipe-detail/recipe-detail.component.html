@@ -1,0 +1,67 @@
+<ng-container *ngIf="finalRecivedRecipe.name; else noRecipes">
+  <div class="row">
+    <div class="col-xs-">
+      <img
+        [src]="finalRecivedRecipe.imagePath"
+        [alt]="finalRecivedRecipe.name"
+        class="img-fluid"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{{ finalRecivedRecipe.name }}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="dropdown">
+        <button
+          class="btn btn-primary dropdown-toggle"
+          type="button"
+          id="recipeDropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Manage Recipe
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="recipeDropdown">
+          <li>
+            <a
+              class="dropdown-item"
+              style="cursor: pointer"
+              (click)="addToShoppingList()"
+              >To Shopping List</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              [routerLink]="['/recipes', selectedId, 'edit']"
+              >Edit Recipe</a
+            >
+          </li>
+          <li><a class="dropdown-item" href="#">Delete Recipe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <p>{{ finalRecivedRecipe.description }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let ingredient of finalRecivedRecipe.ingredients"
+        >
+          {{ ingredient.name }} ({{ ingredient.amount }})
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-container>
+<ng-template #noRecipes>Please select a recipe from the left</ng-template>

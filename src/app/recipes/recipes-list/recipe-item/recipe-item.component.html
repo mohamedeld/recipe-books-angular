@@ -1,0 +1,18 @@
+<a
+  [routerLink]="['/recipes', receivedRecipe.id]"
+  routerLinkActive="active"
+  class="list-group-item list-group-item-action clearfix my-2 border"
+>
+  <div class="d-flex align-items-center justify-content-between">
+    <div>
+      <h4 class="list-group-item-heading">{{ receivedRecipe.name }}</h4>
+      <p class="list-group-item-text">{{ receivedRecipe.description }}</p>
+    </div>
+    <img
+      [src]="receivedRecipe.imagePath"
+      [alt]="receivedRecipe.name"
+      class="img-fluid mx-3"
+      style="max-height: 50px"
+    />
+  </div>
+</a>
